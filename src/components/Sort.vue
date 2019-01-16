@@ -65,29 +65,28 @@ export default {
                 }
             ],
             goodlist: [],
-            selected: "1" //请注意这里的1一定要加引号，否则没效 ，若初始化默认并且需要动态请求数据  则在初methods里面写个初始化获取数据的就行了
+            selected: "0" //请注意这里的1一定要加引号，否则没效 ，若初始化默认并且需要动态请求数据  则在初methods里面写个初始化获取数据的就行了
         };
     },
     methods: {
         changeapi(api) {
-            console.log(api);
+            // console.log(api);
             this.axios.get(api).then(res => {
                 let data = res.data.datas.class_list[0].child;
-
                 this.goodlist = data;
-                console.log(this.goodlist);
+                // console.log(this.goodlist);k
             });
         }
+    },
+    created(){
+        this.changeapi("https://www.nanshig.com/mobile/index.php?act=goods_class&op=get_child_all&gc_id=256")
     }
-    // created(){
-    //     this.changeapi()
-    // }
 };
 </script>
 <style lang="scss" scoped>
 @function t($px) {
     //$px为需要转换的字号
-    @return $px / 75px * 1rem; //100px为根字体大小
+    @return $px / 50px * 1rem; //100px为根字体大小
 }
 .sore {
     header {

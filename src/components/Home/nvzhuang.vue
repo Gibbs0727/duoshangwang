@@ -56,7 +56,7 @@
         <!-- 商品 -->
         <div class="product" id="_goods">
             <ul class="clearfix">
-                <li v-for="item in nvzhuang" :key="item.goods_id">
+                <li v-for="item in nvzhuang" :key="item.goods_id" @click="gotodetail(item.goods_id)">
                     <img
                         class="default_image"
                         :alt="item.goods_name"
@@ -85,6 +85,11 @@ export default {
             nvzhuang: []
         };
     },
+    methods: {
+        gotodetail(id) {
+            this.$router.push({ path: "/Detail/" + id });
+        }
+    },
     created() {
         this.axios
             .get(
@@ -105,7 +110,7 @@ export default {
 <style lang="scss" scoped>
 @function t($px) {
     //$px为需要转换的字号
-    @return $px / 75px * 1rem; //100px为根字体大小
+    @return $px / 50px * 1rem; //100px为根字体大小
 }
 //顶上图
 .bd {
@@ -194,6 +199,7 @@ export default {
                 .bottom {
                     height: t(24px);
                     .fenxiao_price {
+                        color: #E4393C;
                         height: t(24px);
                         font-size: t(14px);
                         float: left;

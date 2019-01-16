@@ -52,7 +52,7 @@ export default {
 <style lang="scss" scoped>
 @function t($px) {
     //$px为需要转换的字号
-    @return $px / 75px * 1rem; //100px为根字体大小
+    @return $px / 50px * 1rem; //100px为根字体大小
 }
 .message {
     header {

@@ -33,7 +33,11 @@
         <!-- 商品 -->
         <div class="product" id="_goods">
             <ul class="clearfix">
-                <li v-for="item in taozhuang" :key="item.goods_id">
+                <li
+                    v-for="item in taozhuang"
+                    :key="item.goods_id"
+                    @click="gotodetail(item.goods_id)"
+                >
                     <img
                         class="default_image"
                         :alt="item.goods_name"
@@ -45,7 +49,8 @@
                         <span class="virtual_seles">月销{{item.goods_salenum}}件</span>
                         <div class="bottom">
                             <p class="fenxiao_price">
-                                <span>￥</span>{{item.goods_price}}
+                                <span>￥</span>
+                                {{item.goods_price}}
                             </p>
                             <span class="nowbuy">下单</span>
                         </div>
@@ -61,6 +66,11 @@ export default {
         return {
             taozhuang: []
         };
+    },
+    methods: {
+        gotodetail(id) {
+            this.$router.push({ path: "/Detail/" + id });
+        }
     },
     created() {
         this.axios
@@ -82,12 +92,12 @@ export default {
 <style lang="scss" scoped>
 @function t($px) {
     //$px为需要转换的字号
-    @return $px / 75px * 1rem; //100px为根字体大小
+    @return $px / 50px * 1rem; //100px为根字体大小
 }
 //顶上图
 .bd {
     height: t(150px);
-    width: t(375px);
+    // width: t(375px);
     .img-responsive {
         height: 100%;
         width: 100%;
@@ -96,7 +106,7 @@ export default {
 //special区
 .special {
     background: #eff4ee;
-    width: t(360px);
+    // width: t(360px);
     height: t(58px);
     padding: t(0px) t(7.5px) t(12px) t(7.5px);
     margin-top: t(7.5px);
@@ -173,6 +183,7 @@ export default {
                     .fenxiao_price {
                         height: t(24px);
                         font-size: t(14px);
+                        color: #E4393C;
                         float: left;
                         line-height: t(24px);
                         font-weight: bold;

@@ -4,59 +4,33 @@
         <div class="bd">
             <ul>
                 <li>
-                    <a href="javascript:;">
-                        <img
-                            class="img-responsive"
-                            src="http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-06/5b1784489426b.jpg"
-                        >
-                    </a>
+                    <img
+                        class="img-responsive"
+                        src="http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-06/5b1784489426b.jpg"
+                    >
                 </li>
             </ul>
         </div>
         <!-- special区域 -->
         <div class="special">
-            <a class="special_item" href="javascript:;">
-                <img
-                    class="pic"
-                    src="http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-09/5ba0cf50c7861.png"
-                >
-                <span class="cate_name">美容护肤</span>
-            </a>
-            <a class="special_item" href="javascript:;">
-                <img
-                    class="pic"
-                    src="http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-09/5ba0cf60386af.png"
-                >
-                <span class="cate_name">美妆/化妆工具</span>
-            </a>
-            
-            <a class="special_item" href="javascript:;">
-                <img
-                    class="pic"
-                    src="http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-09/5ba0d217b2af6.png"
-                >
-                <span class="cate_name">身体护理</span>
-            </a>
-            <a class="special_item" href="javascript:;">
-                <img
-                    class="pic"
-                    src="http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-09/5ba0cf8dc4e44.png"
-                >
-                <span class="cate_name">美发护发</span>
-            </a>
-            
-            <a class="special_item" href="javascript:;">
-                <img
-                    class="pic"
-                    src="http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-09/5ba0d201ddb22.png"
-                >
-                <span class="cate_name">女性护理</span>
+            <a
+                class="special_item"
+                href="javascript:;"
+                v-for="spitem in special"
+                :key="spitem.title"
+            >
+                <img class="pic" :src="spitem.img">
+                <span class="cate_name">{{spitem.title}}</span>
             </a>
         </div>
         <!-- 商品 -->
         <div class="product" id="_goods">
             <ul class="clearfix">
-                <li v-for="item in meizhuang" :key="item.goods_id">
+                <li
+                    v-for="item in meizhuang"
+                    :key="item.goods_id"
+                    @click="gotodetail(item.goods_id)"
+                >
                     <img
                         class="default_image"
                         :alt="item.goods_name"
@@ -68,7 +42,8 @@
                         <span class="virtual_seles">月销{{item.goods_salenum}}件</span>
                         <div class="bottom">
                             <p class="fenxiao_price">
-                                <span>￥</span>{{item.goods_price}}
+                                <span>￥</span>
+                                {{item.goods_price}}
                             </p>
                             <span class="nowbuy">下单</span>
                         </div>
@@ -82,8 +57,40 @@
 export default {
     data() {
         return {
-            meizhuang: []
+            meizhuang: [],
+            special: [
+                {
+                    title: "美容护肤",
+                    img:
+                        "http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-09/5ba0cf50c7861.png"
+                },
+                {
+                    title: "美妆/化妆",
+                    img:
+                        "http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-09/5ba0cf60386af.png"
+                },
+                {
+                    title: "身体护理",
+                    img:
+                        "http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-09/5ba0d217b2af6.png"
+                },
+                {
+                    title: "美发护发",
+                    img:
+                        "http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-09/5ba0cf8dc4e44.png"
+                },
+                {
+                    title: "女性护理",
+                    img:
+                        "http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-09/5ba0d201ddb22.png"
+                }
+            ]
         };
+    },
+    methods: {
+        gotodetail(id) {
+            this.$router.push({ path: "/Detail/" + id });
+        }
     },
     created() {
         this.axios
@@ -105,12 +112,12 @@ export default {
 <style lang="scss" scoped>
 @function t($px) {
     //$px为需要转换的字号
-    @return $px / 75px * 1rem; //100px为根字体大小
+    @return $px / 50px * 1rem; //100px为根字体大小
 }
 //顶上图
 .bd {
     height: t(150px);
-    width: t(375px);
+    // width: t(375px);
     .img-responsive {
         height: 100%;
         width: 100%;
@@ -119,11 +126,13 @@ export default {
 //special区
 .special {
     background: #eff4ee;
-    width: t(360px);
+    // width: t(360px);
     height: t(58px);
     padding: t(0px) t(7.5px) t(12px) t(7.5px);
     margin-top: t(7.5px);
     line-height: 0;
+    display: flex;
+    justify-content: space-between;
     .special_item {
         display: inline-block;
         width: t(42px);
@@ -197,6 +206,7 @@ export default {
                         height: t(24px);
                         font-size: t(14px);
                         float: left;
+                        color: #E4393C;
                         line-height: t(24px);
                         font-weight: bold;
                         span {

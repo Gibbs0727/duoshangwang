@@ -15,33 +15,24 @@
         </div>
         <!-- special区域 -->
         <div class="special">
-            <a class="special_item" href="javascript:;">
-                <img
-                    class="pic"
-                    src="http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-09/5b9f5adc29118.jpg"
-                >
-                <span class="cate_name">内搭</span>
-            </a>
-            <a class="special_item" href="javascript:;">
-                <img
-                    class="pic"
-                    src="http://cdn.img.ecduo.cn/ecduo/data/files/store_5491/goods_cate/1018651.jpg"
-                >
-                <span class="cate_name">外套</span>
-            </a>
-            
-            <a class="special_item" href="javascript:;">
-                <img
-                    class="pic"
-                    src="http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-09/5b9f5b1983716.jpg"
-                >
-                <span class="cate_name">男士裤装</span>
+            <a
+                class="special_item"
+                href="javascript:;"
+                v-for="spitem in special"
+                :key="spitem.title"
+            >
+                <img class="pic" :src="spitem.img">
+                <span class="cate_name">{{spitem.title}}</span>
             </a>
         </div>
         <!-- 商品 -->
         <div class="product" id="_goods">
             <ul class="clearfix">
-                <li v-for="item in nanzhuang" :key="item.goods_id">
+                <li
+                    v-for="item in nanzhuang"
+                    :key="item.goods_id"
+                    @click="gotodetail(item.goods_id)"
+                >
                     <img
                         class="default_image"
                         :alt="item.goods_name"
@@ -53,7 +44,8 @@
                         <span class="virtual_seles">月销{{item.goods_salenum}}件</span>
                         <div class="bottom">
                             <p class="fenxiao_price">
-                                <span>￥</span>{{item.goods_price}}
+                                <span>￥</span>
+                                {{item.goods_price}}
                             </p>
                             <span class="nowbuy">下单</span>
                         </div>
@@ -67,8 +59,30 @@
 export default {
     data() {
         return {
-            nanzhuang: []
+            nanzhuang: [],
+            special: [
+                {
+                    title: "内搭",
+                    img:
+                        "http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-09/5b9f5adc29118.jpg"
+                },
+                {
+                    title: "外搭",
+                    img:
+                        "http://cdn.img.ecduo.cn/ecduo/data/files/store_5491/goods_cate/1018651.jpg"
+                },
+                {
+                    title: "男士裤装",
+                    img:
+                        "http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-09/5b9f5b1983716.jpg"
+                }
+            ]
         };
+    },
+    methods: {
+        gotodetail(id) {
+            this.$router.push({ path: "/Detail/" + id });
+        }
     },
     created() {
         this.axios
@@ -90,12 +104,12 @@ export default {
 <style lang="scss" scoped>
 @function t($px) {
     //$px为需要转换的字号
-    @return $px / 75px * 1rem; //100px为根字体大小
+    @return $px / 50px * 1rem; //100px为根字体大小
 }
 //顶上图
 .bd {
     height: t(150px);
-    width: t(375px);
+    // width: t(375px);
     .img-responsive {
         height: 100%;
         width: 100%;
@@ -104,17 +118,20 @@ export default {
 //special区
 .special {
     background: #eff4ee;
-    width: t(360px);
+    // width: t(360px);
     height: t(58px);
     padding: t(0px) t(7.5px) t(12px) t(7.5px);
     margin-top: t(7.5px);
     line-height: 0;
+    // display: flex;
+    // justify-content: space-between;
     .special_item {
         display: inline-block;
         width: t(42px);
         height: t(42px);
         margin-top: t(12px);
-        margin-right: t(12px);
+        margin-right: t(32px);
+        
         .pic {
             height: t(30px);
             width: t(30px);
@@ -136,11 +153,9 @@ export default {
 /*实体专供    */
 /*商品展示*/
 .product {
-    width: 100%;
     margin-bottom: t(80px);
     line-height: 0;
     ul {
-        width: 100%;
         li:nth-child(2n) {
             margin-left: t(7px);
         }
@@ -180,6 +195,7 @@ export default {
                     height: t(24px);
                     .fenxiao_price {
                         height: t(24px);
+                        color: #E4393C;
                         font-size: t(14px);
                         float: left;
                         line-height: t(24px);

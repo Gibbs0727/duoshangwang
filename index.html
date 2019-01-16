@@ -6,14 +6,18 @@
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     id="vp" />
   <script>
-    //设置根元素字体大小
-    var wd = document.documentElement.clientWidth * window.devicePixelRatio / 10;
-    document.getElementsByTagName("html")[0].style.fontSize = wd + "px";
-    //物理像素*设备像素比=真实像素
-    var scale = 1 / window.devicePixelRatio;
-    var mstr = 'initial-scale=' + scale * 2 + ', maximum-scale=' + scale * 2 + ', minimum-scale=' + scale * 2 +
-      ', user-scalable=no';
-    document.getElementById("vp").content = mstr;
+    (function (doc, win) {
+      var docEl = doc.documentElement,
+        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+        recalc = function () {
+          var clientWidth = docEl.clientWidth;
+          if (!clientWidth) return;
+          docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+        };
+      if (!doc.addEventListener) return;
+      win.addEventListener(resizeEvt, recalc, false);
+      doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
 
   </script>
   <title>duoshangwang</title>

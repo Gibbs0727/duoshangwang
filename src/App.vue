@@ -74,6 +74,10 @@ export default {
             // 通过this.$router获取到路由实例对象
             this.$router.push({path});
         }
+    },
+    mounted(){
+        this.selected = this.$route.path.slice(this.$route.path.lastIndexOf('/')+1)
+        // console.log(this.selected)
     }
 }
 </script>

@@ -5,7 +5,7 @@
                 <img class="imgleft" src="/static/home/logo.png" alt>
             </mt-button>
             <mt-button slot="right" @click="goto('/Search')">
-                <!--Search前面加/才能跳转到 -->
+                
                 <img class="imgright" src="/static/home/search.jpg" alt>
             </mt-button>
         </mt-header>
@@ -17,7 +17,7 @@
                 @click.native="goto2(homelist.name)"
             >{{homelist.title}}</mt-tab-item>
         </mt-navbar>
-        <router-view></router-view>
+     <router-view></router-view> 
     </div>
 </template>
 <script>
@@ -63,18 +63,23 @@ export default {
             this.$router.push({ path: "/Home/" + name });
         }
     },
-    watch: {
-        $route(to, from) {
-            let index = this.$route.path.slice(6);
-            this.selected = index;
-        }
-    }
+    mounted() {
+        this.selected = this.$route.path.slice(this.$route.path.lastIndexOf('/')+1)
+        // console.log(this.selected)
+    },
+    // watch: {
+    //     //Home页面子路由监听
+    //     $route(to, from) {
+    //         let index = this.$route.path.slice(6);
+    //         this.selected = index;
+    //     }
+    // }
 };
 </script>
 <style lang="scss" scoped>
 @function t($px) {
     //$px为需要转换的字号
-    @return $px / 75px * 1rem; //100px为根字体大小
+    @return $px / 50px * 1rem; //100px为根字体大小
 }
 body {
     margin: t(0px);
