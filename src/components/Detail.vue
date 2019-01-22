@@ -198,6 +198,7 @@ export default {
     @return $px / 50px * 1rem; //100px为根字体大小
 }
 .detail {
+    padding-top:t(42px);
     header {
         background: red;
     }
