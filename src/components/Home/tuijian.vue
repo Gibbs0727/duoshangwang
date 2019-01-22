@@ -3,73 +3,16 @@
         <div class="banner">
             <mt-swipe :auto="4000">
                 <mt-swipe-item>
-                    <img src="/static/home/tuijian/banner1.jpg" alt>
+                    <img src="/static/home/tuijian/banner1.jpg">
                 </mt-swipe-item>
                 <mt-swipe-item>
-                    <img src="/static/home/tuijian/banner2.jpg" alt>
+                    <img src="/static/home/tuijian/banner2.jpg">
                 </mt-swipe-item>
             </mt-swipe>
         </div>
         <div class="special">
-            <a href="javascript:;" class="special_item">
-                <img
-                    src="http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-10/5bcfeb9164169.png"
-                    alt
-                >
-            </a>
-            <a href="javascript:;" class="special_item">
-                <img
-                    src="http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-10/5bcfebb393a81.png"
-                    alt
-                >
-            </a>
-            <a href="javascript:;" class="special_item">
-                <img
-                    src="http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-10/5bcfec1ad5f38.png"
-                    alt
-                >
-            </a>
-            <a href="javascript:;" class="special_item">
-                <img
-                    src="http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-10/5bcfec340d031.png"
-                    alt
-                >
-            </a>
-            <a href="javascript:;" class="special_item">
-                <img
-                    src="http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-10/5bcfec4c275a8.png"
-                    alt
-                >
-            </a>
-            <a href="javascript:;" class="special_item">
-                <img
-                    src="http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-10/5bcfed1a3e954.png"
-                    alt
-                >
-            </a>
-            <a href="javascript:;" class="special_item">
-                <img
-                    src="http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-10/5bcfed3dcf47d.png"
-                    alt
-                >
-            </a>
-            <a href="javascript:;" class="special_item">
-                <img
-                    src="http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-10/5bcfed893edaf.png"
-                    alt
-                >
-            </a>
-            <a href="javascript:;" class="special_item">
-                <img
-                    src="http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-10/5bcfeda4279bb.png"
-                    alt
-                >
-            </a>
-            <a href="#" class="special_item">
-                <img
-                    src="http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-10/5bcfedd95871e.png"
-                    alt
-                >
+            <a href="javascript:;" class="special_item" v-for="(item,idx) in special_item" :key="idx">
+                <img :src="item">
             </a>
         </div>
         <div class="ms-view">
@@ -80,14 +23,8 @@
             <a class="more" href="#">更多</a>
         </div>
         <div id="zt_list" class="zt_list">
-            <a class="zt_item" href="#">
-                <img src=" http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-09/5b978d72d48f2.jpg">
-            </a>
-            <a class="zt_item" href="#">
-                <img src=" http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-09/5b978d922a921.jpg">
-            </a>
-            <a class="zt_item" href="#">
-                <img src=" http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-09/5b978d440dbbe.jpg">
+            <a class="zt_item" href="javascript:;" v-for="(item,idx) in zt_list" :key="idx">
+                <img :src="item">
             </a>
         </div>
         <div class="new-searcha proseabg" id="target">
@@ -129,7 +66,25 @@
 export default {
     data() {
         return {
-            homegoods: []
+            homegoods: [],
+            special_item:[
+                "http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-10/5bcfeb9164169.png",
+                "http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-10/5bcfebb393a81.png",
+                "http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-10/5bcfec1ad5f38.png",
+                "http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-10/5bcfec340d031.png",
+                "http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-10/5bcfec4c275a8.png",
+                "http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-10/5bcfed1a3e954.png",
+                "http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-10/5bcfed3dcf47d.png",
+                "http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-10/5bcfed893edaf.png",
+                "http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-10/5bcfeda4279bb.png",
+                "http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-10/5bcfedd95871e.png"
+            ],
+            zt_list:[
+                "http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-09/5b978d72d48f2.jpg",
+                "http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-09/5b978d922a921.jpg",
+                "http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-09/5b978d440dbbe.jpg"
+
+            ]
         };
     },
     methods: {
@@ -163,13 +118,13 @@ export default {
 .banner {
     // width:t(375px)
     // width: 100%;
-    height:t(200px);
+    height: t(200px);
     .mint-swipe {
         height: t(200px);
         .mint-swipe-item {
             img {
                 height: 100%;
-                width:100%;
+                width: 100%;
             }
         }
     }
@@ -184,7 +139,7 @@ export default {
     .special_item {
         display: inline-block;
         height: t(45px);
-        width: t(53px);
+        width: t(72px);
         // background: red;
 
         margin-top: t(12px);
