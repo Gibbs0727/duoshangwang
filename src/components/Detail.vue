@@ -114,7 +114,6 @@
                 <img src="http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-08/5b6a5db8bdb3f.jpg">
                 <img src="http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-08/5b6a5dbaede19.jpg">
                 <img src="http://cdn.img.ecduo.cn/ecduo/Uploads/Picture/2018-08/5b6a5dbcc8153.jpg">
-                <div></div>
             </div>
         </div>
         <!-- 下方购买 -->
