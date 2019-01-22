@@ -24,7 +24,7 @@
                 :id="(idx+1)"
                 style="display:block"
             >
-                <div class="dsort">
+                <div class="dsort" @click="gotolist(list.gc_name)">
                     <img :src="list.gc_image" class="pic-wrap">
                     <span class="list-tt">{{list.gc_name}}</span>
                 </div>
@@ -76,6 +76,10 @@ export default {
                 this.goodlist = data;
                 // console.log(this.goodlist);k
             });
+        },
+        gotolist(name) {
+            // console.log(name);
+            this.$router.push({ path: "/List/"+name});
         }
     },
     created(){

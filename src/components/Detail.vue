@@ -2,9 +2,9 @@
     <div class="detail">
         <!-- 顶部 -->
         <mt-header title="商品详情" fixed>
-            <router-link to="/Home/tuijian" slot="left">
-                <mt-button icon="back">首页</mt-button>
-            </router-link>
+            <div slot="left" @click="goto()">
+                <mt-button icon="back"></mt-button>
+            </div>
             <router-link to="/Cart" slot="right">
                 <mt-button>购物车</mt-button>
             </router-link>
@@ -158,6 +158,12 @@ export default {
             },
             bannerimg: []
         };
+    },
+    methods:{
+        //返回上一页
+        goto(){
+            this.$router.go(-1);
+        }
     },
     mounted() {
         // console.log(this.$route.params.id);

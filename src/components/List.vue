@@ -2,7 +2,7 @@
     <div class="list">
         <!-- 上方搜索框 -->
         <div class="searchbtn">
-            <span class="backindex" @click="goto('/Home/tuijian')">&lt;</span>
+            <span class="backindex" @click="goto()">&lt;</span>
             <input type="text" class="shuru" v-model="keyword">
             <span class="sousuo" @click="gotoresult">搜索</span>
         </div>
@@ -45,13 +45,13 @@ export default {
         };
     },
     methods: {
-        goto(path) {
-            // 编程式导航：利用js实现路由跳转
-            // 通过this.$router获取到路由实例对象
-            this.$router.push({ path });
+        //返回上一页
+        goto() {
+            this.$router.go(-1);
         },
+        //列表页搜索商品渲染到当前页
         gotoresult() {
-            this.$router.push({ path: "/List/"+this.keyword});
+            this.$router.replace({ path: "/List/"+this.keyword});
             this.axios
             .get(
                 `https://www.nanshig.com/mobile/index.php?act=goods&op=goods_list&page=20&keyword=${
@@ -60,7 +60,7 @@ export default {
             )
             .then(res => {
                 let data = res.data.datas.goods_list;
-                console.log(data);
+                // console.log(data);
                 this.goodlist = data;
             });
         },
@@ -68,6 +68,7 @@ export default {
             this.$router.push({ path: "/Detail/" + id });
         }
     },
+    //从搜索页搜索商品渲染到列表页
     created() {
         // console.log(this.$route.params.keyword);
         //https://www.nanshig.com/mobile/index.php?act=goods&op=goods_detail&goods_id=227005
@@ -88,6 +89,7 @@ export default {
             .then(res => {
                 let data = res.data.datas.goods_list;
                 // console.log(data);
+                this.keyword = this.$route.params.keyword
                 this.goodlist = data;
             });
     }

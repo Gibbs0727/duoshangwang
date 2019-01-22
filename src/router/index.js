@@ -20,75 +20,78 @@ Vue.use(Router)
 
 export default new Router({
   routes: [{
-    path: '/Home',
-    name: 'Home',
-    component: Home,
-    children: [{
-      path: 'tuijian',
-      name: 'tuijian',
-      component: tuijian
-    }, {
-      path: '',
-      redirect: {
-        name: 'tuijian'
-      }
-    }, {
-      path: 'xiexue',
-      name: 'xiexue',
-      component: xiexue
-    }, {
-      path: 'nanzhuang',
-      name: 'nanzhuang',
-      component: nanzhuang
-    }, {
-      path: 'nvzhuang',
-      name: 'nvzhuang',
-      component: nvzhuang
-    }, {
-      path: 'taozhuang',
-      name: 'taozhuang',
-      component: taozhuang
-    }, {
-      path: 'meizhuang',
-      name: 'meizhuang',
-      component: meizhuang
-    }]
-  }, {
-    path: '/',
-    redirect: {
-      name: 'tuijian'
+        path: '/Home',
+        name: 'Home',
+        component: Home,
+            children: [{
+            path: 'tuijian',
+            name: 'tuijian',
+            component: tuijian
+            }, {
+            path: '',
+            redirect: {
+                name: 'tuijian'
+            }
+            }, {
+            path: 'xiexue',
+            name: 'xiexue',
+            component: xiexue
+            }, {
+            path: 'nanzhuang',
+            name: 'nanzhuang',
+            component: nanzhuang
+            }, {
+            path: 'nvzhuang',
+            name: 'nvzhuang',
+            component: nvzhuang
+            }, {
+            path: 'taozhuang',
+            name: 'taozhuang',
+            component: taozhuang
+            }, {
+            path: 'meizhuang',
+            name: 'meizhuang',
+            component: meizhuang
+            }]
+        }, {
+            path: '/',
+            redirect: {
+            name: 'tuijian'
+            }
+        }, {
+            path: '/Cart',
+            name: 'Cart',
+            component: Cart
+        }, {
+            path: '/Search',
+            name: 'Search',
+            component: Search
+        }, {
+            path: '/Mine',
+            name: 'Mine',
+            component: Mine
+        }, {
+            path: '/Login',
+            name: 'Login',
+            component: Login
+        }, {
+            path: '/Sort',
+            name: 'Sort',
+            component: Sort
+        }, {
+            path: '/Message',
+            name: 'Message',
+            component: Message
+        }, {
+            path: '/Detail/:id',
+            name: 'Detail',
+            component: Detail
+        }, {
+            path: '/List/:keyword',
+            name: 'List',
+            component: List
+        }],
+    scrollBehavior (to, from, savedPosition) {
+        return { x: 0, y: 0 }
     }
-  }, {
-    path: '/Cart',
-    name: 'Cart',
-    component: Cart
-  }, {
-    path: '/Search',
-    name: 'Search',
-    component: Search
-  }, {
-    path: '/Mine',
-    name: 'Mine',
-    component: Mine
-  }, {
-    path: '/Login',
-    name: 'Login',
-    component: Login
-  }, {
-    path: '/Sort',
-    name: 'Sort',
-    component: Sort
-  }, {
-    path: '/Message',
-    name: 'Message',
-    component: Message
-  }, {
-    path: '/Detail/:id',
-    name: 'Detail',
-    component: Detail
-  }, {
-    path: '/List/:keyword',
-    name: 'List',
-    component: List
-  }]
 })

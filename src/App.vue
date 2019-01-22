@@ -65,7 +65,7 @@ export default {
                     name:'Mine'
                 }
             ],
-            selected:'Home'
+            selected:'/Home'
         }
     },
     methods:{
@@ -76,6 +76,7 @@ export default {
         }
     },
     mounted(){
+        console.log(this.$route.path)
         this.selected = this.$route.path.slice(this.$route.path.lastIndexOf('/')+1)
         // console.log(this.selected)
     }

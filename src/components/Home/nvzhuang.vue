@@ -115,7 +115,7 @@ export default {
 //顶上图
 .bd {
     height: t(150px);
-    width: t(375px);
+    // width: t(375px);
     .img-responsive {
         height: 100%;
         width: 100%;
@@ -124,11 +124,13 @@ export default {
 //special区
 .special {
     background: #eff4ee;
-    width: t(360px);
+    // width: t(360px);
     height: t(58px);
     padding: t(0px) t(7.5px) t(12px) t(7.5px);
     margin-top: t(7.5px);
     line-height: 0;
+    display: flex;
+    justify-content: space-between;
     .special_item {
         display: inline-block;
         width: t(42px);
@@ -199,10 +201,10 @@ export default {
                 .bottom {
                     height: t(24px);
                     .fenxiao_price {
-                        color: #E4393C;
                         height: t(24px);
                         font-size: t(14px);
                         float: left;
+                        color: #E4393C;
                         line-height: t(24px);
                         font-weight: bold;
                         span {

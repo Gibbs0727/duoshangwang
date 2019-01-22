@@ -129,6 +129,8 @@ export default {
     padding: t(0px) t(7.5px) t(12px) t(7.5px);
     margin-top: t(7.5px);
     line-height: 0;
+    display: flex;
+    justify-content: space-between;
     .special_item {
         display: inline-block;
         width: t(42px);
@@ -201,8 +203,8 @@ export default {
                     .fenxiao_price {
                         height: t(24px);
                         font-size: t(14px);
-                        color: #E4393C;
                         float: left;
+                        color: #E4393C;
                         line-height: t(24px);
                         font-weight: bold;
                         span {
