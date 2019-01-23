@@ -10,7 +10,7 @@
             <div class="searchtop">
                 <p>热门搜索</p>
             </div>
-            <mt-badge size="small" color="#fff" v-for="(item,idx) in searchlist" :key="idx">{{item}}</mt-badge>
+            <mt-badge size="small" color="#fff" v-for="(item,idx) in searchlist" :key="idx" @click.native="gotolist2(item)">{{item}}</mt-badge>
         </div>
     </div>
 </template>
@@ -31,6 +31,9 @@ export default {
         gotolist() {
             this.$router.push({ path: "/List/"+this.keyword});
             // this.$router.push({name:'Detail',params:{id},query:{keyword:'xxx'}})
+        },
+        gotolist2(name) {
+            this.$router.push({ path: "/List/"+name});
         }
     },
     created() {
@@ -59,7 +62,7 @@ body {
         font-size: t(16px);
         .searchbtn {
             height: t(32px);
-            width: t(375.2px);
+            width: t(355.2px);
             background: red;
             padding: t(10px) t(10px);
             .backindex {
@@ -106,6 +109,8 @@ body {
         line-height: t(15px);
         padding: t(3px);
         margin-right: t(10px);
+        margin-bottom:t(5px);
+        margin-top:t(5px);
     }
 }
 </style>
