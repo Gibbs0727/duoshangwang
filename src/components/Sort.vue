@@ -12,7 +12,7 @@
             <mt-tab-item
                 v-for="(item,idx) in xuanxiang"
                 :key="item.title"
-                :id="(idx+1)"
+                :id="(idx)"
                 @click.native="changeapi(item.api)"
             >{{item.title}}</mt-tab-item>
         </mt-navbar>
@@ -21,7 +21,7 @@
             <mt-tab-container-item
                 v-for="(list,idx) in goodlist"
                 :key="list.gc_id"
-                :id="(idx+1)"
+                :id="(idx)"
                 style="display:block"
             >
                 <div class="dsort" @click="gotolist(list.gc_name)">
@@ -65,7 +65,7 @@ export default {
                 }
             ],
             goodlist: [],
-            selected: "0" //请注意这里的1一定要加引号，否则没效 ，若初始化默认并且需要动态请求数据  则在初methods里面写个初始化获取数据的就行了
+            selected: 0 
         };
     },
     methods: {
